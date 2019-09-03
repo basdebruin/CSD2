@@ -13,8 +13,8 @@ antwoord = input("Ok {}, is het goed als ik je Sjoerd noem?  ".format(name))
 
 
 
-#  als ze ja antwoorden is alles goed,
-#  als ze iets anders invullen dan krijgen ze ee egatief antwoord
+#  als de gebruiker ja antwoorden is alles goed,
+#  als de gebruiker iets anders invullen dan krijgen ze een egatief antwoord
 if antwoord == "ja":
     print("Ok, Sjoerd")
 else:
