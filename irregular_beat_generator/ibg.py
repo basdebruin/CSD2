@@ -4,6 +4,7 @@
 import time
 import random as r
 import simpleaudio as sa
+import sys
 
 # load sounds
 kick = sa.WaveObject.from_wave_file("sounds/kick.wav")
@@ -12,13 +13,16 @@ hat = sa.WaveObject.from_wave_file("sounds/hat.wav")
 
 
 # open file and split lines
-f = open("54prob.txt", "r")
+if len(sys.argv) > 1:
+    f = open(sys.argv[1], "r")
+else:
+    sys.exit("Make sure to include a text file as an argument. ")
 f = f.read().split("\n")
+
 
 # take the "kick" out and split to list
 kickProbs = f[1].replace("kick", "").split()
 snareProbs = f[2].replace("snare", "").split()
-print("kicks: ", kickProbs, "\snare: ", snareProbs)
 
 
 
@@ -62,14 +66,14 @@ while True:
         # kick en hihat
         currentKick = float(kickProbs[index])
         if r.random() < currentKick:
-            kick.play()
+            kp = kick.play()
         else:
             # play hihat if kick doens't play
-            hat.play()
+            hp = hat.play()
         # snare
         currentSnare = float(snareProbs[index])
         if r.random() < currentSnare:
-            snare.play()
+            sp = snare.play()
         # reset lastTime for next loop
         lastTime = time.time()
         index += 1
@@ -77,10 +81,14 @@ while True:
     elif index >= len(kickProbs):
 
         # reset index for next loop through array
-        if playTimes > 0:
+        if playTimes > 1:
             index = 0
             playTimes -= 1
         else:
+            # wait till done and break
+            kp.wait_done()
+            hp.wait_done()
+            sp.wait_done()
             break
 
     else:
