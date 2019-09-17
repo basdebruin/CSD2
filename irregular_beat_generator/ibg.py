@@ -20,7 +20,7 @@ else:
 f = f.read().split("\n")
 
 
-# take the "kick" out and split to list
+# take the "kick", "snare" out and split to list
 kickProbs = f[1].replace("kick", "").split()
 snareProbs = f[2].replace("snare", "").split()
 
@@ -56,6 +56,8 @@ else:
     playTimes = 3
 
 
+
+
 # PLAYER
 lastTime = time.time()
 index = 0
@@ -70,6 +72,7 @@ while True:
         else:
             # play hihat if kick doens't play
             hp = hat.play()
+        
         # snare
         currentSnare = float(snareProbs[index])
         if r.random() < currentSnare:
