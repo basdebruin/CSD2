@@ -64,8 +64,8 @@ index = 0
 while True:
     if time.time() - lastTime >= timePerLoop and index < len(kickProbs):
 
-        # speel
-        # kick en hihat
+        # play
+        # kick & hihat
         currentKick = float(kickProbs[index])
         if r.random() < currentKick:
             kp = kick.play()
