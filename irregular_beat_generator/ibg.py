@@ -65,8 +65,8 @@ myMidi = MIDIFile(1)
 myMidi.addTempo(0,0,bpm)
 # MIDI Note Maker
 def addMidiNote(p, t):
-    # track, channnel, pitch, time(quarter note), duration, volume
-    myMidi.addNote(0, 0, p, t / 4, 0.25, 100)
+    # track, channel, pitch, time(quarter note), duration, volume
+    myMidi.addNote(0, 9, p, t / 4, 0.25, 100)
 
 
 # PLAYER
