@@ -116,11 +116,13 @@ while True:
 
 
 # WRITE MIDI
-
+# after asking the user
 print("That was all.\n")
 saveOrNot = input("--- Would you like to save the beat as a MIDI file? --- (y/n) ---> ")
 if saveOrNot.lower() == "y":
+    # generate filename based on datetime
     fileName = "Generated_Beat_" + datetime.now().strftime("%H:%M:%S_%d-%m-%y") + ".mid"
+    # write file
     with open(fileName, "wb") as output_file:
         myMidi.writeFile(output_file)
     print("Saved as ", fileName, "\nBye!")
