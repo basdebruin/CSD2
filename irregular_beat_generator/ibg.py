@@ -1,6 +1,7 @@
 # IRREGULAR BEAT GENERATOR
 # bas de bruin
 
+# bunch of imports
 import time
 from datetime import datetime
 import random as r
@@ -20,7 +21,6 @@ if len(sys.argv) > 1:
 else:
     sys.exit("Make sure to include a text file as an argument. ")
 f = f.read().split("\n")
-
 
 # take the "kick", "snare" out and split to list
 kickProbs = f[1].replace("kick", "").split()
@@ -60,13 +60,18 @@ elif 1 < int(playTimes) < 100:
 else:
     playTimes = 3
 
+
+
 # setup midi file
 myMidi = MIDIFile(1)
 myMidi.addTempo(0,0,bpm)
+
 # MIDI Note Maker
 def addMidiNote(p, t):
     # track, channel, pitch, time(quarter note), duration, volume
     myMidi.addNote(0, 9, p, t / 4, 0.25, 100)
+
+
 
 
 # PLAYER
@@ -74,6 +79,7 @@ lastTime = time.time()
 index = 0
 indexFromStart = 0
 while True:
+    # when it's time for another 8th note
     if time.time() - lastTime >= timePerLoop and index < len(kickProbs):
 
         # play
@@ -111,8 +117,10 @@ while True:
             break
 
     else:
-
+        # wait for next While cycle
         time.sleep(0.001)
+
+
 
 
 # WRITE MIDI
