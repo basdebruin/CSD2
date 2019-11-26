@@ -1,24 +1,16 @@
 #include <iostream>
+#include "les2.h"
 
-
-class Oscillator {
-
-public:
-    Oscillator(float freq);
-
-    void setFreq(float freq);
-    float getFreq();
-
-private:
-    float freq;
-
-};
-
-// oscillator functions
+// oscillator implementation
 Oscillator::Oscillator(float freq){
     std::cout << "\n -osc constructed\n";
     this->freq = freq;
 }
+
+Oscillator::~Oscillator() {
+    std::cout << "\n -osc destructed\n";
+}
+
 void Oscillator::setFreq(float freq){
     std::cout << "\n -osc freq set\n";
 
@@ -28,20 +20,8 @@ void Oscillator::setFreq(float freq){
     }
     this->freq = freq;
 }
+
 float Oscillator::getFreq(){
     std::cout << "\n -osc freq get\n";
     return freq;
-}
-
-
-
-int main() {
-
-    Oscillator osc(2000);
-    osc.setFreq(30000);
-
-    std::cout << "hoi\n" << osc.getFreq() << std::endl;
-
-    return 0;
-
 }
