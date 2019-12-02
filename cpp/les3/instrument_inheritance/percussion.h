@@ -3,7 +3,10 @@
 class Percussion : Instrument {
 
 public:
-    Percussion();
+    Percussion(std::string name);
     ~Percussion();
+
+private:
+    std::string name;
 
 };
