@@ -1,12 +1,12 @@
-banjo: instrument.o playing_the_banjo.o
-	g++ -o banjo instrument.o playing_the_banjo.o
+les3: instrument.o main.o
+	g++ -o les3 instrument.o main.o
 
 instrument.o: instrument.cpp
 	g++ -c instrument.cpp
 
-playing_the_banjo.o: playing_the_banjo.cpp
-	g++ -c playing_the_banjo.cpp
+main.o: main.cpp
+	g++ -c main.cpp
 
 
 clean:
-	rm *.o banjo
+	rm *.o les3

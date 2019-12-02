@@ -2,9 +2,6 @@
 
 int main() {
 
-    Instrument banjo("pling");
-    banjo.play();
-    Instrument trommel("boem");
-    trommel.play();
+    return 0;
 
 }

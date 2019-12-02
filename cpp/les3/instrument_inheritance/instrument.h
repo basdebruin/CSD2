@@ -3,6 +3,9 @@
 
 using namespace std;
 
+#ifndef INST_H
+#define INST_H
+
 class Instrument {
 
 public:
@@ -10,7 +13,9 @@ public:
 
     void play();
 
-private:
+protected:
     string sound;
 
 };
+
+#endif
