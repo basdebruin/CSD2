@@ -1,11 +1,9 @@
 #include "instrument.h"
 
-class Mayonaise : Instrument {
+class Mayonaise : public Instrument {
 
 public:
     Mayonaise();
     ~Mayonaise();
 
-protected:
-    std::string sound = "mayo is a real instrument";
 };

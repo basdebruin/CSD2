@@ -1,8 +1,8 @@
 #include "instrument.h"
 
-Instrument::Instrument(string inputSound) {
-    sound = inputSound;
+Instrument::Instrument(std::string sound) {
+    this->sound = sound;
 }
 void Instrument::play() {
-    std::cout << sound << std::endl;
+    std::cout << sound << "\n";
 }

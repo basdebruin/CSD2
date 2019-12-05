@@ -2,7 +2,8 @@
 
 
 Mayonaise::Mayonaise() : Instrument(sound) {
-    std::cout << name << std::endl;
+    std::cout << "-- MAYO -- Constructed\n";
+    this->sound = "Mayo is a real instrument";
 }
 
 Mayonaise::~Mayonaise(){};

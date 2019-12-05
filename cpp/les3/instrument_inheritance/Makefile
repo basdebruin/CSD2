@@ -1,3 +1,6 @@
+# makefile for instrument_inheritance ass.
+
+
 inheritance: instrument.o banjo.o mayonaise.o main.o
 	g++ -o inheritance instrument.o banjo.o mayonaise.o main.o
 

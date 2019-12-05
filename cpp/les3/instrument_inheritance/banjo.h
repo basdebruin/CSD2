@@ -1,12 +1,15 @@
 #include "instrument.h"
 
-class Banjo : Instrument {
+class Banjo : public Instrument {
 
 public:
     Banjo(float freq);
     ~Banjo();
 
-private:
+    void play();
+
+protected:
     float freq;
+    std::string sound = "The banjo says pling";
 
 };
