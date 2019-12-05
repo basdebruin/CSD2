@@ -1,6 +1,7 @@
 #include "instrument.h"
 #include "banjo.h"
 #include "mayonaise.h"
+#include "bongo.h"
 
 int main() {
 
@@ -9,6 +10,9 @@ int main() {
 
     Mayonaise m;
     m.play();
+
+    Bongo bongo;
+    bongo.play();
 
     return 0;
 
