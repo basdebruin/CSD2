@@ -3,6 +3,9 @@
 class Sine : Osc {
 
 public:
-    void tick();
+    Sine();
+    ~Sine();
+
+    void tick(double samplerate);
 
 };

@@ -1,4 +1,7 @@
 #include <iostream>
+#include "math.h"
+
+#define PI_2 6.28318530717959
 
 #ifndef OSC_H
 #define OSC_H
@@ -20,10 +23,10 @@ public:
     float getSample();
 
 protected:
-    float sample;
-    float phase;
-    float amp;
-    float freq;
+    float sample = 0;
+    float phase = 0;
+    float amp = 0.5;
+    float freq = 440;
 
 };
 
