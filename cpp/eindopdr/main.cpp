@@ -25,7 +25,7 @@ int main(int argc, char ** argv) {
 	sine.setFreq(500);
 
 	//assign a function to the JackModule::onProces
-	jack.onProcess = [samplerate](jack_default_audio_sample_t * inBuf,
+	jack.onProcess = [&](jack_default_audio_sample_t * inBuf,
 		jack_default_audio_sample_t * outBuf, jack_nframes_t nframes) {
 
 
