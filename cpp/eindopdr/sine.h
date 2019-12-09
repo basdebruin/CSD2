@@ -1,6 +1,6 @@
 #include "osc.h"
 
-class Sine : Osc {
+class Sine : public Osc {
 
 public:
     Sine();

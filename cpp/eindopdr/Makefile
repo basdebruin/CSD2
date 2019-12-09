@@ -1,15 +1,18 @@
-CC = g++
-CFLAGS = -I/usr/local/include -Wall -std=c++1z
-LDFLAGS= -ljack
+melody: jack_module.o osc.o sine.o main.o
+	g++ -o melody jack_module.o osc.o sine.o main.o
 
-all: example
+jack_module.o: jack_module.cpp jack_module.h
+	g++ -c jack_module.cpp
 
-example : jack_module.o main.o
-	$(CC) -o $@ $(CFLAGS) jack_module.o main.o $(LDFLAGS)
+osc.o: osc.cpp osc.h
+	g++ -c osc.cpp
 
-.cpp.o:
-	$(CC) -c $< $(CFLAGS)
+sine.o: sine.cpp sine.h
+	g++ -c sine.cpp
+
+main.o: main.cpp
+	g++ -c main.cpp
 
 clean:
-	rm -f *.o
-	rm -f example
+	rm *.o melody
+

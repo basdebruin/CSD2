@@ -2,24 +2,14 @@
 #include <thread>
 #include "jack_module.h"
 #include "math.h"
- // my own:
+// my own:
 #include "osc.h"
 #include "sine.h"
 
 /*
- * NOTE: jack2 needs to be installed
- * jackd invokes the JACK audio server daemon
- * https://github.com/jackaudio/jackaudio.github.com/wiki/jackd(1)
- * on mac, you can start the jack audio server daemon in the terminal:
- * jackd -d coreaudio
- * 
  * Modified by Bas de Bruin
  * to play oscillators
  */
-
-// --- DEFINING OSCILLATORS ---
-Sine sine;
-sine.setAmp(0.5);
 
 int main(int argc, char ** argv) {
 	// create a JackModule instance
@@ -28,6 +18,11 @@ int main(int argc, char ** argv) {
 	// init the jack, use program name as JACK client name
 	jack.init(argv[0]);
 	double samplerate = jack.getSamplerate();
+
+
+	// --- DEFINING OSCILLATORS ---
+	Sine sine;
+	sine.setFreq(500);
 
 	//assign a function to the JackModule::onProces
 	jack.onProcess = [samplerate](jack_default_audio_sample_t * inBuf,
