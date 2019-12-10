@@ -1,4 +1,4 @@
-CC = gcc-9
+CC = g++
 CFLAGS = -I/usr/local/include -Wall -std=c++1z
 LDFLAGS= -ljack
 
