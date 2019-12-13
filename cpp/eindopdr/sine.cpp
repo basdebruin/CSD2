@@ -1,7 +1,7 @@
 #include "sine.h"
 
 Sine::Sine() : Osc() {
-    std::cout << "- sine - constructed";
+    std::cout << "- sine - constructed\n";
 }
 Sine::~Sine() {}
 

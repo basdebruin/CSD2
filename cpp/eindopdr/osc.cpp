@@ -1,7 +1,7 @@
 #include "osc.h"
 
 Osc::Osc() {
-    std::cout << "- osc - constructed";
+    std::cout << "- osc - constructed\n";
 }
 
 Osc::~Osc() {}
@@ -21,5 +21,5 @@ float Osc::getAmp() {
 }
 
 float Osc::getSample() {
-    return sample;
+    return sample * amp;
 }

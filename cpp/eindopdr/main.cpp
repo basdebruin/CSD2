@@ -5,6 +5,8 @@
 // my own:
 #include "osc.h"
 #include "sine.h"
+#include "pulse.h"
+#include "noise.h"
 
 /*
  * Modified by Bas de Bruin
@@ -21,18 +23,27 @@ int main(int argc, char ** argv) {
 
 
 	// --- DEFINING OSCILLATORS ---
-	Sine sine;
-	sine.setFreq(500);
+	//Sine sine;
+	//sine.setFreq(300);
 
-	//assign a function to the JackModule::onProces
+	Pulse p;
+	p.setFreq(300);
+	p.setSaturation(100);
+
+	Noise noise;
+
+
+	// --- JACK ONPROCESS ---
 	jack.onProcess = [&](jack_default_audio_sample_t * inBuf,
 		jack_default_audio_sample_t * outBuf, jack_nframes_t nframes) {
 
 
 			for (unsigned int i = 0; i < nframes; i++) {
 				// tick and sample the oscillator
-				sine.tick(samplerate);
-				outBuf[i] = sine.getSample();
+				p.tick(samplerate);
+				noise.tick();
+				
+				outBuf[i] = p.getSample() + noise.getSample();
 			}
 
 			return 0;
