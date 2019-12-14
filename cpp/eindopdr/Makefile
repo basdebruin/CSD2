@@ -2,7 +2,7 @@ CC = g++
 CFLAGS = -I/usr/local/include -Wall -std=c++1z
 LDFLAGS= -ljack
 
-OFILES = jack_module.o osc.o sine.o fm.o pulse.o noise.o envelope.o snare.o kick.o main.o
+OFILES = jack_module.o osc.o sine.o fm.o pulse.o noise.o envelope.o snare.o kick.o lfosynth.o main.o
 
 all: player
 

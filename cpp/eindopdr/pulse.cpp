@@ -8,13 +8,16 @@ Pulse::~Pulse() {}
 //  Generating the sine:
 void Pulse::tick(double samplerate) {
     phase += freq / samplerate;
-    sample = pow(sin(phase * PI_2), 5);
+    // generate sample based on saturation exponent
+    sample = pow(sin(phase * PI_2), saturation);
 }
 
-void Pulse::setSaturation(float saturation) {
-    if (saturation > 0 && saturation < 100) {
-        this->saturation = saturation;
+void Pulse::setSaturation(int saturation) {
+    // filter saturation input
+    if (saturation >= 0 && saturation <= 1000) {
+        // make sure saturation in uneven
+        this->saturation = saturation + (1 - (saturation % 2));
     } else {
-        std::cout << "Error: Saturation should be between 0 and 100\n";
+        std::cout << "Error: Saturation should be between 0 and 1000\n";
     }
 }

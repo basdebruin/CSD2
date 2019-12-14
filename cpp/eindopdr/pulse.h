@@ -1,4 +1,5 @@
 #include "osc.h"
+#pragma once
 
 class Pulse : public Osc {
 
@@ -8,9 +9,9 @@ public:
 
     void tick(double samplerate);
 
-    void setSaturation(float saturation);
+    void setSaturation(int saturation);
 
 private:
-    float saturation = 5;
+    int saturation = 5;
 
 };

@@ -4,6 +4,7 @@
 Kick::Kick() {
     env.setLength(5000);
     osc.setFreq(0);
+    osc.setAmp(1);
     std::cout << "- Kick - constructed\n";
 }
 
