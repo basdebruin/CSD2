@@ -1,4 +1,5 @@
 #include "osc.h"
+#pragma once
 
 class Sine : public Osc {
 

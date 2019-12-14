@@ -8,6 +8,7 @@
 #include "pulse.h"
 #include "noise.h"
 #include "snare.h"
+#include "kick.h"
 
 /*
  * Modified by Bas de Bruin
@@ -26,15 +27,18 @@ int main(int argc, char ** argv) {
 	// --- DEFINING OSCILLATORS ---
 	//Sine sine;
 	//sine.setFreq(300);
-	//Pulse p;
-	// p.setFreq(300);
-	// p.setSaturation(100);
 
 	// Noise noise;
 
 	int timePassed = 0;
 
 	Snare snare;
+	Kick kick;
+
+	Pulse p;
+	p.setFreq(200);
+	p.setSaturation(50);
+	p.setAmp(0.2);
 
 
 
@@ -42,11 +46,18 @@ int main(int argc, char ** argv) {
 	jack.onProcess = [&](jack_default_audio_sample_t * inBuf,
 		jack_default_audio_sample_t * outBuf, jack_nframes_t nframes) {
 
-			// retrigger snare
-			if (timePassed > 100) {
-				snare.trigger();
+			// trigger kick and snare
+			if (timePassed == 100) {
+				kick.trigger();
+				std::cout << "kick trigger\n";
+				//
+				p.setFreq(300);
+			} else if (timePassed > 200) {
 				timePassed = 0;
+				snare.trigger();
 				std::cout << "snare trigger\n";
+				//
+				p.setFreq(200);
 			}
 			timePassed++;
 
@@ -54,8 +65,11 @@ int main(int argc, char ** argv) {
 			for (unsigned int i = 0; i < nframes; i++) {
 				// tick and sample
 				
+				p.tick(samplerate);
+				//
 				snare.tick();
-				outBuf[i] = snare.getSample();
+				kick.tick(samplerate);
+				outBuf[i] = snare.getSample() + kick.getSample() + p.getSample();
 			}
 
 			return 0;
