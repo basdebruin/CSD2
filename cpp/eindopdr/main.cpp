@@ -7,6 +7,7 @@
 #include "sine.h"
 #include "pulse.h"
 #include "noise.h"
+#include "snare.h"
 
 /*
  * Modified by Bas de Bruin
@@ -25,25 +26,36 @@ int main(int argc, char ** argv) {
 	// --- DEFINING OSCILLATORS ---
 	//Sine sine;
 	//sine.setFreq(300);
+	//Pulse p;
+	// p.setFreq(300);
+	// p.setSaturation(100);
 
-	Pulse p;
-	p.setFreq(300);
-	p.setSaturation(100);
+	// Noise noise;
 
-	Noise noise;
+	int timePassed = 0;
+
+	Snare snare;
+
 
 
 	// --- JACK ONPROCESS ---
 	jack.onProcess = [&](jack_default_audio_sample_t * inBuf,
 		jack_default_audio_sample_t * outBuf, jack_nframes_t nframes) {
 
+			// retrigger snare
+			if (timePassed > 100) {
+				snare.trigger();
+				timePassed = 0;
+				std::cout << "snare trigger\n";
+			}
+			timePassed++;
+
 
 			for (unsigned int i = 0; i < nframes; i++) {
-				// tick and sample the oscillator
-				p.tick(samplerate);
-				noise.tick();
+				// tick and sample
 				
-				outBuf[i] = p.getSample() + noise.getSample();
+				snare.tick();
+				outBuf[i] = snare.getSample();
 			}
 
 			return 0;
