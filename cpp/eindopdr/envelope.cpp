@@ -12,6 +12,7 @@ Envelope::Envelope(int length) {
 Envelope::~Envelope() {}
 
 void Envelope::setLength(int length) {
+    // filter length to be higher than 0
     if (length > 0) {
         this->length = length;
     } else {
@@ -23,6 +24,7 @@ int Envelope::getLength() {
 }
 
 void Envelope::trigger() {
+    // time is reset so tick() starts outputting samples again
     time = 0;
 }
 

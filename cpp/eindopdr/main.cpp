@@ -25,12 +25,14 @@ int main(int argc, char ** argv) {
 	jack.init(argv[0]);
 	double samplerate = jack.getSamplerate();
 
+	// keeping track of time for the sequence
 	int timePassed = 0;
 
 	// --- DEFINING OSCILLATORS / SYNTHS ---
 	Snare snare;
 	Kick kick;
 
+	// freq, lfo speed, envelope length
 	LfoSynth synth(40, 2, 50000);
 
 
@@ -50,12 +52,12 @@ int main(int argc, char ** argv) {
 		jack_default_audio_sample_t * outBuf, jack_nframes_t nframes) {
 
 			// trigger kick and snare
-			if (timePassed == 100) {
+			if (timePassed == 50) {
 				kick.trigger();
 				std::cout << "•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o\n";
-				//
+				// trigger synth envelope
 				synth.trigger();
-			} else if (timePassed > 200) {
+			} else if (timePassed > 100) {
 				timePassed = 0;
 				snare.trigger();
 				std::cout << "o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•o•\n";
