@@ -27,8 +27,13 @@ int main(int argc, char ** argv) {
 	jack.init(argv[0]);
 	float samplerate = jack.getSamplerate();
 
+	// check arguments
+	float delayTimeSec = DELAY_TIME_SEC;
+	if(argc >= 2) delayTimeSec = (float) atof(argv[1]);
+	std::cout <<  "\nDelay time in seconds: " << delayTimeSec << "\n";
+
 	// make delay
-	Delay delay(DELAY_TIME_SEC, samplerate);
+	Delay delay(delayTimeSec, samplerate);
 
 	//assign a function to the JackModule::onProces
 	jack.onProcess = [ & delay](jack_default_audio_sample_t * inBuf,
