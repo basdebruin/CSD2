@@ -35,7 +35,7 @@ int main(int argc, char ** argv) {
 	std::cout <<  "\nDelay time in seconds: " << delayTimeSec << "\n";
 
 	// make delay
-	Delay delay(delayTimeSec, samplerate, 0.8);
+	Delay delay(delayTimeSec, 10, samplerate, 0.8);
 
 	//assign a function to the JackModule::onProces
 	jack.onProcess = [ & delay](jack_default_audio_sample_t * inBuf,
@@ -49,6 +49,7 @@ int main(int argc, char ** argv) {
 
 	//keep the program running and listen for user input, q = quit
 	std::cout << "\n\nPress 'q' when you want to quit the program.\n";
+	std::cout << "Press 1 through 4 to change delaytimes\n\n";
 	bool running = true;
 	while (running) {
 		int input = std::cin.get();
@@ -58,12 +59,15 @@ int main(int argc, char ** argv) {
 				jack.end();
 				break;
 			case 49:
-				delay.setDelayTime(0.4);
+				delay.setDelayTime(0.001);
 				break;
 			case 50:
-				delay.setDelayTime(0.5);
+				delay.setDelayTime(0.1);
 				break;
 			case 51:
+				delay.setDelayTime(0.5);
+				break;
+			case 52:
 				delay.setDelayTime(1);
 				break;
 				

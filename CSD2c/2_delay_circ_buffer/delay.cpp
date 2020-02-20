@@ -1,12 +1,13 @@
 #include "delay.h"
 #include <iostream>
 
-Delay::Delay(float delayTime, float samplerate, float feedback) {
+Delay::Delay(float delayTime, float maxDelayTime, float samplerate, float feedback) {
     std::cout << "-------- Delay Constructed ----------\n";
     
     this->samplerate = samplerate;
     this->feedback = feedback;
 
+    buffer.resetSize(maxDelayTime * samplerate);
     setDelayTime(delayTime);
 
     // logging
@@ -32,7 +33,6 @@ void Delay::process(float * inBuf, float * outBuf, int nframes) {
 void Delay::setDelayTime(float delayTime) {
     this->delayTime = delayTime;
     delaySamples = samplerate * delayTime;
-    buffer.resetSize(delaySamples * 2);
     buffer.setDistanceRW(delaySamples);
     std::cout << "delay::delayTime set to: " << delayTime << std::endl;
 }

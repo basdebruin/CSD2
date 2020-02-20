@@ -3,7 +3,7 @@
 
 class Delay {
 public:
-    Delay(float delayTime, float samplerate, float feedback);
+    Delay(float delayTime, float maxDelayTime, float samplerate, float feedback);
     ~Delay();
     void process(float* inBuf, float* outBuf, int nframes);
 
