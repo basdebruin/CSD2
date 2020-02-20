@@ -3,3 +3,5 @@ irregular_beat_generator/Generated_Beat_12:30:44_01-10-19.mid
 irregular_beat_generator/Generated_Beat_16:23:33_08-10-19.mid
 irregular_beat_generator/Generated_Beat_16:55:40_08-10-19.mid
 irregular_beat_generator/test_midi_file.mid
+
+*.o

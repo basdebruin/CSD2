@@ -1,5 +1,7 @@
 #include <iostream>
 #include <thread>
+#include <string>
+
 #include "jack_module.h"
 #include "math.h"
 #include "circBuffer.h"
@@ -15,7 +17,7 @@
 
 // 10 seconds if samplerate = 44100
 #define MAX_DELAY_SIZE 441000
-#define DELAY_TIME_SEC 9.0f
+#define DELAY_TIME_SEC 2.0f
 
 #define PI_2 6.28318530717959
 
@@ -33,7 +35,7 @@ int main(int argc, char ** argv) {
 	std::cout <<  "\nDelay time in seconds: " << delayTimeSec << "\n";
 
 	// make delay
-	Delay delay(delayTimeSec, samplerate);
+	Delay delay(delayTimeSec, samplerate, 0.8);
 
 	//assign a function to the JackModule::onProces
 	jack.onProcess = [ & delay](jack_default_audio_sample_t * inBuf,
@@ -49,11 +51,22 @@ int main(int argc, char ** argv) {
 	std::cout << "\n\nPress 'q' when you want to quit the program.\n";
 	bool running = true;
 	while (running) {
-		switch (std::cin.get()) {
-			case 'q':
+		int input = std::cin.get();
+		switch (input) {
+			case 'q': 
 				running = false;
 				jack.end();
 				break;
+			case 49:
+				delay.setDelayTime(0.4);
+				break;
+			case 50:
+				delay.setDelayTime(0.5);
+				break;
+			case 51:
+				delay.setDelayTime(1);
+				break;
+				
 		}
 	}
 
