@@ -1,7 +1,8 @@
 # Blender opdracht voor visuals opdracht CSD2D
 
-> LET OP! Ik heb de opdracht net anders geïnterpreteerd, met toestemming.
+> LET OP! Ik heb de opdracht net anders geïnterpreteerd, met toestemming. Mijn eindresultaat is dus niet realtime.
 
+> Als je geen blender hebt: ik heb de scripts en node setups ook los in de git gezet, zodat je ze wel kan bekijken.
 
 Voor de (Realtime) Visuals bij Muziek opdracht heb ik besloten om Blender te gebuiken vanwege de vele rendermogelijkheden, met als doel om te kijken of Blender geschikt is voor het maken van audio reactieve visuals.
 
@@ -27,3 +28,16 @@ Het eindresultaat moet minstens bevatten:
 * Coole vormen gemaakt met Shader Nodes (minstens 2 korte filmpjes)
 * Een Python script dat een audio bestand inlaad, de hardheid berekend en dit naar parameter keyframes schrijft.
 * Documentatie over mijn bevingingen en conclusies
+
+
+## Het proces: Mijn strijd met Blender
+
+Voor mijn 2 proof of concept filmpjes wilde ik de intensiteit van het geluid koppelen aan de lichtintensiteit en aan de beweging van de vormen.
+
+Audio koppelen aan lichtintensiteit was redelijk makkelijk, Blender heeft een ingebouwde functie om audio direct om te zetten in keyframes, dit werkt redelijk maar geeft je weinig controle.
+
+Voor het besturen van de beweging wilde ik geluidsintensiteit koppelen aan de snelheid van de rotatie van de volumetric shader, dit kan niet met de methode die hierboven staat dus hier moest ik zelf een script voor schrijven.
+
+Het besturen van shader waarden en het maken van keyframes ging redelijk vloeiend met de Blender API maar het grootste probleem kwam toen ik een WAV bestand om wou zetten naar volumewaardes en keyframes. Blender gebruikt helaas een andere versie van Python dan de OS en er is nog geen manier om externe python modules te installeren (trust me I tried). Ik moest dus een python script buiten blender runnen die met de soundfile module een wav file omzet in een csv bestand, dit kon ik lezen vanuit blender met de standard ingebouwde csv module en dit kon ik dan omzetten in volume en keyframes.
+
+Blender kan heel veel maar als je iets wil doen wat buiten de verwachtte functionaliteit van Blender ligt is het ineens veel moeilijker of onmogelijk.
