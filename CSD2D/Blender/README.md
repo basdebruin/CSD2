@@ -2,7 +2,10 @@
 
 > LET OP! Ik heb de opdracht net anders geïnterpreteerd, met toestemming. Mijn eindresultaat is dus niet realtime.
 
-> Als je geen blender hebt: ik heb de scripts en node setups ook los in de git gezet, zodat je ze wel kan bekijken.
+> De code staat in `audioCsvToKeyframes.py`, node setup staat onderaan deze pagina &darr;
+
+[**Bekijk de video &rarr;**](https://vimeo.com/422183403)
+
 
 Voor de (Realtime) Visuals bij Muziek opdracht heb ik besloten om Blender te gebuiken vanwege de vele rendermogelijkheden, met als doel om te kijken of Blender geschikt is voor het maken van audio reactieve visuals.
 
@@ -50,3 +53,7 @@ Uiteindelijk heb ik 2 videos gemaakt, met het zelfde systeem en script als basis
 Nog een nadeel van Blender: In totaal duurde het renderen van de 16 seconden video's ongeveer 4 uur (tests niet meegerekend), in 1000x1000 pixels en met 12 samples-per-pixel, dit is nog redlijk lage kwaliteit, een hoge kwaliteit video duurt nog zeker 4x zo lang.
 
 Ik heb de video's los gerendered en tot 1 video geëdit, ook met Blender. Had ik al verteld dat Blender veel kon?
+
+
+![Node Setup](docs/emissionCloud_NodeSetup.png)
+> `emmisionCloud.blend` Shader Node setup
