@@ -1,6 +1,8 @@
 ![Main Image](docs/hero.jpg)
 > Voor de Elektro-Akkoestische opdracht voor CSD2D
 
+[__Bekijk de demovideo &rarr;__](https://vimeo.com/427025028)
+
 ## Concept
 ![Schets](docs/schets.png)
 Het doel van dit concept is uitzoeken hoe ik zo veel mogelijk interactie en verschillen ik kon halen uit 2 onderdelen: 
