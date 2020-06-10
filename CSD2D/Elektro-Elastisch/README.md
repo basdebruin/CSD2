@@ -29,3 +29,5 @@ Voor de uitvoering heb ik een klein breadboardje gebruikt met losse draadje die 
 De code die op de teensy draait is redelijk simpel, zie: `elektrisch_elastisch.ino`. Maar deze opdracht is een soort van test van eenvoud geworden, waarbij ik met zo min mogelijk snufjes, toch interessante speelmethodes en geluiden kon maken.
 
 Ik denk wel dat dat is gelukt, het is in ieder geval 'interessant'.
+
+![Schema](docs/schematic.jpg)
